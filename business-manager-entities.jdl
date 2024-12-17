@@ -1,0 +1,18 @@
+/**
+ * The ApiKey entity.
+ * @author Sou Fung Zhao
+ */
+@EnableAudit
+entity ApiKey {
+  name String required unique
+  key String required unique
+}
+
+relationship ManyToOne {
+  ApiKey to @OnDelete("CASCADE") User with builtInEntity
+}
+
+paginate * with infinite-scroll
+service * with serviceClass
+filter * except ApiKey
+dto ApiKey with mapstruct
